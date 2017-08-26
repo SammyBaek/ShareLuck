@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
+    tool = {
+        content: 'hammer',
+        owner: 'Sam 30062'
+    }
 }
