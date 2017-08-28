@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
 import { Tool } from "./tool.model";
+import { ToolService } from "./tool.service";
 
 @Component({
     selector: 'app-tool-list',
@@ -14,9 +15,11 @@ import { Tool } from "./tool.model";
         </div>
     `
 })
-export class ToolListComponent {
-    tools: Tool[] = [
-        new Tool('Hammer', 'Sam'),
-        new Tool('Driver', 'Jack')
-    ];
+export class ToolListComponent implements OnInit {
+    constructor(private toolService: ToolService) {}
+    tools: Tool[];
+
+    ngOnInit() {
+        this.tools = this.toolService.getTools();
+    }
 }
