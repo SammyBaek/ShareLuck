@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { NgForm } from "@angular/forms";
 
 import { ToolService } from "./tool.service";
 import { Tool } from "./tool.model";
@@ -10,7 +11,8 @@ import { Tool } from "./tool.model";
 export class ToolInputComponent {
     constructor(private toolService: ToolService) {}
 
-    onSave(value: string) {
-        this.toolService.addTool(new Tool(value, 'Sammy'));
+    onSubmit(form: NgForm) {
+        this.toolService.addTool(new Tool(form.value.content, 'Sammy'));
+        form.resetForm();
     }
 }
